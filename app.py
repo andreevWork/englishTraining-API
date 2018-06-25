@@ -3,9 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api
 from flask_marshmallow import Marshmallow
 from flask_restful_swagger import swagger
+from flask_cors import CORS
 
 
 myApp = Flask(__name__)
+
+CORS(myApp)
 
 myApp.config.from_pyfile('config.cfg')
 
