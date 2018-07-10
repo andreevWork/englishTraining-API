@@ -6,6 +6,7 @@ from index import start_server
 
 # Нужно чтобы подцепились модели для миграций
 from models.serials import Serial
+from models.episodes import Episode
 
 manager = Manager(myApp)
 migrate = Migrate(myApp, myDb)

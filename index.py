@@ -1,12 +1,7 @@
 from app import myApi, myApp, myDb
-from models.serials import Serial
-from resourses.serials import SerialsResource, EpisodeResource
+from resourses.episodes import EpisodesResource
 
-# myDb.session.add(Serial(season=1, episode=2, title='Test morty', videoSrc='qrqewrew', subtitleSrc='qfrqewfqre'))
-# myDb.session.commit()
-
-myApi.add_resource(SerialsResource, '/serials')
-myApi.add_resource(EpisodeResource, '/serials/<int:episode_id>')
+myApi.add_resource(EpisodesResource, '/episodes')
 
 
 def start_server():
@@ -14,4 +9,5 @@ def start_server():
 
 
 if __name__ == '__main__':
+    myDb.create_all()
     start_server()
