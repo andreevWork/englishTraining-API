@@ -5,7 +5,7 @@ myApi.add_resource(EpisodesResource, '/episodes')
 
 
 def start_server():
-    myApp.run()
+    myApp.run(host='0.0.0.0')
 
 
 if __name__ == '__main__':
