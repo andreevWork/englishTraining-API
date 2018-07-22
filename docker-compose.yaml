@@ -3,6 +3,7 @@ version: '2'
 services:
   postgres:
     image: postgres
+    env_file: .env
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_DB: $POSTGRES_DB
@@ -16,6 +17,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    env_file: .env
     environment:
       PGADMIN_DEFAULT_EMAIL: $PGADMIN_DEFAULT_EMAIL
       PGADMIN_DEFAULT_PASSWORD: $PGADMIN_DEFAULT_PASSWORD
@@ -26,6 +28,7 @@ services:
     restart: always
 
   app:
+    env_file: .env
     build:
       context: .
       args:

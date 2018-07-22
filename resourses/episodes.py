@@ -13,10 +13,6 @@ class EpisodesResource(Resource):
         responseClass=Episode.__name__,
     )
     def get(self):
-        data = Episode.query\
-            .join(Serial)
-
-        for d in data:
-            print(d, d.serial)
+        data = Episode.query.join(Serial)
 
         return episode_schema.jsonify(data, many=True)
