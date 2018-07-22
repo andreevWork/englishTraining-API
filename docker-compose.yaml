@@ -26,12 +26,13 @@ services:
     restart: always
 
   app:
-    build: .
-    args:
-      SQLALCHEMY_DATABASE_URI: $SQLALCHEMY_DATABASE_URI
-      ENV: $ENV
-      TESTING: $TESTING
-      DEBUG: $DEBUG
+    build:
+      context: .
+      args:
+        SQLALCHEMY_DATABASE_URI: $SQLALCHEMY_DATABASE_URI
+        ENV: $ENV
+        TESTING: $TESTING
+        DEBUG: $DEBUG
     ports:
       - 5000:5000
     depends_on:
