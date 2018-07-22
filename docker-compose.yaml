@@ -27,7 +27,7 @@ services:
 
   app:
     build: .
-    environment:
+    args:
       SQLALCHEMY_DATABASE_URI: $SQLALCHEMY_DATABASE_URI
       ENV: $ENV
       TESTING: $TESTING
