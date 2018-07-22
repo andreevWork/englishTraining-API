@@ -4,13 +4,21 @@ from flask_restful import Api
 from flask_marshmallow import Marshmallow
 from flask_restful_swagger import swagger
 from flask_cors import CORS
+from flask_env import MetaFlaskEnv
+
+
+class Configuration(metaclass=MetaFlaskEnv):
+    ENV = 'development'
+    TESTING = True
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/postgres'
 
 
 myApp = Flask(__name__)
 
-CORS(myApp)
+myApp.config.from_object(Configuration)
 
-myApp.config.from_pyfile('config.cfg')
+CORS(myApp)
 
 myDb = SQLAlchemy(myApp)
 

@@ -9,10 +9,10 @@ services:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       PGDATA: $PGDATA
     volumes:
-       - ~/db:$PGDATA
+       - /dbdata/:$PGDATA
     ports:
       - "5432:5432"
-    restart: unless-stopped
+    restart: always
 
   pgadmin:
     image: dpage/pgadmin4
@@ -20,7 +20,23 @@ services:
       PGADMIN_DEFAULT_EMAIL: $PGADMIN_DEFAULT_EMAIL
       PGADMIN_DEFAULT_PASSWORD: $PGADMIN_DEFAULT_PASSWORD
     volumes:
-       - ~/pgadmin:/var/lib/pgadmin
+       - /pgadmin:/var/lib/pgadmin
     ports:
       - "5050:80"
-    restart: unless-stopped
+    restart: always
+
+  app:
+    build: .
+    environment:
+      SQLALCHEMY_DATABASE_URI: $SQLALCHEMY_DATABASE_URI
+      ENV: $ENV
+      TESTING: $TESTING
+      DEBUG: $DEBUG
+    ports:
+      - 5000:5000
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    restart: always
+
