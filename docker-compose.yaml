@@ -15,18 +15,6 @@ services:
       - "5432:5432"
     restart: always
 
-  pgadmin:
-    image: dpage/pgadmin4
-    env_file: .env
-    environment:
-      PGADMIN_DEFAULT_EMAIL: $PGADMIN_DEFAULT_EMAIL
-      PGADMIN_DEFAULT_PASSWORD: $PGADMIN_DEFAULT_PASSWORD
-    volumes:
-       - /pgadmin:/var/lib/pgadmin
-    ports:
-      - "5050:80"
-    restart: always
-
   app:
     env_file: .env
     build:
@@ -34,6 +22,7 @@ services:
       args:
         SQLALCHEMY_DATABASE_URI: $SQLALCHEMY_DATABASE_URI
         ENV: $ENV
+        STATIC_DIR: $STATIC_DIR
         TESTING: $TESTING
         DEBUG: $DEBUG
     ports:
