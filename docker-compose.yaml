@@ -30,6 +30,6 @@ services:
     depends_on:
       - postgres
     volumes:
-      - .:/app
+      - $STATIC_DIR:/app/static/
     restart: always
 

@@ -18,8 +18,8 @@ myApi.add_resource(EpisodesResource, '/episodes')
 
 # - сваггер доку, потыкаться можно по адресу http://127.0.0.1:5000/api/spec.html#!/spec
 # - админку для зависимостей
-myApp.config['BASIC_AUTH_USERNAME'] = os.environ.get('BASIC_AUTH_USERNAME')
-myApp.config['BASIC_AUTH_PASSWORD'] = os.environ.get('BASIC_AUTH_PASSWORD')
+myApp.config['BASIC_AUTH_USERNAME'] = os.environ.get('BASIC_AUTH_USERNAME') or "admin"
+myApp.config['BASIC_AUTH_PASSWORD'] = os.environ.get('BASIC_AUTH_PASSWORD') or "12345"
 
 myBasicAuth = BasicAuth(myApp)
 
@@ -46,7 +46,7 @@ class MyModelView(ModelView):
 
 
 # Чтобы работала сессия базы на запись
-myApp.secret_key = os.environ.get('SECRET_KEY')
+myApp.secret_key = os.environ.get('SECRET_KEY') or '234'
 myApp.config['SESSION_TYPE'] = 'filesystem'
 
 myAdmin = Admin(myApp, name='english-db')
@@ -54,8 +54,7 @@ myAdmin = Admin(myApp, name='english-db')
 myAdmin.add_view(MyModelView(Serial, myDb.session))
 myAdmin.add_view(MyModelView(Episode, myDb.session))
 
-if os.environ.get('STATIC_DIR'):
-    myAdmin.add_view(FileAdmin(os.environ.get('STATIC_DIR'), name='Static Files'))
+myAdmin.add_view(FileAdmin('./static', name='Static Files'))
 
 def start_server():
     myApp.run(host='0.0.0.0')
