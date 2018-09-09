@@ -33,3 +33,13 @@ services:
       - $STATIC_DIR:/app/static/
     restart: always
 
+  web:
+    image: nginx
+    env_file: .env
+    ports:
+      - "80:80"
+    volumes:
+      - $FRONTEND_DIR:/app
+      - $STATIC_DIR:/app/media/
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: always
