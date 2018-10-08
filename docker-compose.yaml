@@ -22,15 +22,12 @@ services:
       args:
         SQLALCHEMY_DATABASE_URI: $SQLALCHEMY_DATABASE_URI
         ENV: $ENV
-        STATIC_DIR: $STATIC_DIR
         TESTING: $TESTING
         DEBUG: $DEBUG
     ports:
       - "5000:5000"
     depends_on:
       - postgres
-    volumes:
-      - $STATIC_DIR:/app/static/
     restart: always
 
   web:
@@ -40,6 +37,5 @@ services:
       - "80:80"
     volumes:
       - $FRONTEND_DIR:/app
-      - $STATIC_DIR:/app/media/
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     restart: always

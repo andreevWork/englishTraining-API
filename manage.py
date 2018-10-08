@@ -1,12 +1,10 @@
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
-from app import myApp, myDb
+from src.app import myApp, myDb
 from index import start_server
 
-# Нужно чтобы подцепились модели для миграций
-from models.serials import Serial
-from models.episodes import Episode
+# Нужно чтобы подцепились модели для миграций НЕ УДАЛЯТЬ
 
 manager = Manager(myApp)
 migrate = Migrate(myApp, myDb)

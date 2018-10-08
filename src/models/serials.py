@@ -1,4 +1,4 @@
-from app import myDb, myMa
+from src.app import myDb, myMa
 
 
 class Serial(myDb.Model):

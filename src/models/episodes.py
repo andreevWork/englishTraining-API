@@ -1,5 +1,5 @@
-from app import myDb, myMa
-from models.serials import SerialSchema, Serial
+from src.app import myDb, myMa
+from src.models.serials import SerialSchema
 
 
 class Episode(myDb.Model):
