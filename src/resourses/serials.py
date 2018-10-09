@@ -3,7 +3,7 @@ from sqlalchemy import asc
 from flask_restful import Resource
 from flask_restful_swagger import swagger
 
-from src.models.serials import Serial
+from src.models.serials import Serial, serial_schema
 
 
 @swagger.model

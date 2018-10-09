@@ -1,7 +1,15 @@
 # Backend for englishsusb.ru
 
-## nginx.conf
-Конфиг nignx используется для поднятия контейнера в docker-compose
+## docker-compose
+
+### postgres
+Просто контейнер бд для бэка
+
+### web
+Flask приложение, с WSGI сервером (доп сервер Nginx, Apache не нужен)
+
+### Nignx и nginx.conf
+Nginx необходим для раздачи статики (js,css,assets)
 
 ## .env file
 Все переменные используются docker-compose для различных контейнеров:
