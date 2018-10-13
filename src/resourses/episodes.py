@@ -13,6 +13,14 @@ class EpisodesResource(Resource):
         responseClass=Episode.__name__,
     )
     def get(self, serial_id):
-        data = Episode.query.join(Serial).filter(Serial.id == serial_id)
+        data = Episode.query\
+            .join(Serial)\
+            .filter(Serial.id == serial_id)\
+            .with_entities(
+                Episode.id,
+                Episode.title,
+                Episode.season,
+                Episode.episode
+            )
 
         return episode_schema.jsonify(data, many=True)

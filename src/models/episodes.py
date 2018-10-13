@@ -11,9 +11,6 @@ class Episode(myDb.Model):
     season = myDb.Column(myDb.Integer, nullable=False)
     episode = myDb.Column(myDb.Integer, nullable=False)
     title = myDb.Column(myDb.String(120), nullable=False)
-    videoSrc = myDb.Column(myDb.String(120), nullable=False)
-    previewImageSrc = myDb.Column(myDb.String(120))
-    subtitleSrc = myDb.Column(myDb.String(120), nullable=False)
 
 
 class EpisodeSchema(myMa.ModelSchema):
