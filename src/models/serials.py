@@ -4,6 +4,7 @@ from src.app import myDb, myMa
 class Serial(myDb.Model):
     id = myDb.Column(myDb.Integer, primary_key=True)
     title = myDb.Column(myDb.String(120), nullable=False)
+    posterSrc = myDb.Column(myDb.String(120))
     description = myDb.Column(myDb.Text())
 
 
