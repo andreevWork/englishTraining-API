@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "pull" && \
+/usr/bin/git pull
 echo "docker-compose down" && \
 /usr/local/bin/docker-compose down && \
 echo "docker-compose rm -f --all" && \
