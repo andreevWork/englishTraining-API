@@ -24,7 +24,7 @@ myApp = Flask(__name__)
 myApp.config.from_object(Configuration)
 myApp.secret_key = os.environ.get('SECRET_KEY') or '12345'
 
-CORS(myApp, origins=['http://localhost(:\d+)?', 'http://127.0.0.1(:\d+)?', 'http://192.168.\d+\.\d+(:\d+)?'])
+CORS(myApp)
 
 myDb = SQLAlchemy(myApp)
 myApi = Api(myApp)
