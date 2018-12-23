@@ -37,6 +37,8 @@ services:
       - "80:80"
     volumes:
       - /var/html/www/:/app
+      - /etc/ssl/englishsubs/englishsubs.ru.crt:/etc/ssl/englishsubs/englishsubs.ru.crt
+      - /etc/ssl/englishsubs/englishsubs.ru.key:/etc/ssl/englishsubs/englishsubs.ru.key
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     restart: always
