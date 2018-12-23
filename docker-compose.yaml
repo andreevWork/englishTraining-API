@@ -33,6 +33,8 @@ services:
   web:
     image: nginx
     env_file: .env
+    depends_on:
+      - app
     ports:
       - "443:443"
     volumes:
