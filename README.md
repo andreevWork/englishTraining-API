@@ -21,10 +21,7 @@ POSTGRES_PASSWORD=пароль юзера
 POSTGRES_DB=название бд
 PGDATA=volume для хранения данных бд
 ```
-- nginx сервер для раздачи статики фронтенда
-```
-FRONTEND_DIR=volume где лежат файлы фронта, после сборки фронт кладет их в данную папку
-```
+
 - app переменные для настройки Flask приложения
 ```
 SQLALCHEMY_DATABASE_URI=урл базы формата postgresql://username:password@IP:5432/db_name
